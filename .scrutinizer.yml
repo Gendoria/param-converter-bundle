@@ -1,5 +1,21 @@
 filter:
     excluded_paths: [vendor/*, Tests/*]
+checks:
+    php:
+        code_rating: true
+        duplication: true
+        uppercase_constants: true
+        simplify_boolean_return: true
+        return_doc_comments: true
+        return_doc_comment_if_not_inferrable: true        
+    
+coding_style:
+    php:
+        spaces:
+            around_operators:
+                additive: false
+                concatenation: false
+    
 tools:
     external_code_coverage: true
     php_mess_detector: true
