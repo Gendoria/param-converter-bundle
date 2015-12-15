@@ -1,3 +1,11 @@
+Summary
+=======
+
+Gendoria parameter converter bundle adds some more converters to 
+
+[![Build Status](https://travis-ci.org/Gendoria/param-converter-bundle.svg?branch=master)](https://travis-ci.org/Gendoria/param-converter-bundle)
+
+
 Installation
 ============
 
