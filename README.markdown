@@ -3,7 +3,7 @@ Summary
 
 Gendoria parameter converter bundle adds some more converters to Framework Extra Bundle converters.
 
-![License MIT](https://img.shields.io/github/license/Gendoria/param-converter-bundle.svg)
+[![License MIT](https://img.shields.io/github/license/Gendoria/param-converter-bundle.svg)](https://github.com/Gendoria/param-converter-bundle)
 [![Build Status](https://img.shields.io/travis/Gendoria/param-converter-bundle/master.svg)](https://travis-ci.org/Gendoria/param-converter-bundle)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/Gendoria/param-converter-bundle.svg)](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/?branch=master)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/Gendoria/param-converter-bundle.svg)](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/?branch=master)
