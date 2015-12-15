@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <services>
+        <service id="gendoria_param_converter.example" class="Gendoria\ParamConverterBundle\Example">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    -->
+    <services>
+        <service id="gendoria_param_converter.service_param_converter" class="Gendoria\ParamConverterBundle\Request\ParamConverter\ServiceParamConverter">
+            <argument type="service" id="service_container" />
+            <tag name="request.param_converter" priority="-3" converter="service_param_converter" />
+        </service>
+    </services>
+</container>

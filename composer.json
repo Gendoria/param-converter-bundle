@@ -1,0 +1,29 @@
+{
+    "name": "gendoria/param-converter-bundle",
+    "description": "Adds several additional parameter converters",
+    "authors": [
+        {
+            "name": "Gendoria",
+            "email": "gendoria@gendoria.pl"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.0",
+        "symfony/framework-bundle": "~2.3|~3.0",
+        "sensio/framework-extra-bundle": "~3.0"
+    },
+     "require-dev": {
+        "symfony/expression-language": "~2.6|~3.0",
+        "symfony/security-bundle": "~2.4|~3.0"
+    },
+    "suggest": {
+        "symfony/psr-http-message-bridge": "To use the PSR-7 converters",
+        "symfony/expression-language": "",
+        "symfony/security-bundle": ""
+    },
+    "autoload": {
+        "psr-4": { "Gendoria\\ParamConverterBundle\\": "" }
+    },
+    "minimum-stability": "dev"
+}
