@@ -1,7 +1,7 @@
 Summary
 =======
 
-Gendoria parameter converter bundle adds some more converters to 
+Gendoria parameter converter bundle adds some more converters to Framework Extra Bundle converters.
 
 [![Build Status](https://travis-ci.org/Gendoria/param-converter-bundle.svg?branch=master)](https://travis-ci.org/Gendoria/param-converter-bundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/?branch=master)
