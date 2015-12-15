@@ -6,3 +6,6 @@
 
 # Composer PHAR
 /composer.phar
+
+#NetBeans
+/nbproject/
