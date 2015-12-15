@@ -3,9 +3,11 @@ Summary
 
 Gendoria parameter converter bundle adds some more converters to Framework Extra Bundle converters.
 
-[![Build Status](https://travis-ci.org/Gendoria/param-converter-bundle.svg?branch=master)](https://travis-ci.org/Gendoria/param-converter-bundle)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/?branch=master)
+[![Build Status](https://img.shields.io/travis/Gendoria/param-converter-bundle/master.svg)](https://travis-ci.org/Gendoria/param-converter-bundle)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/Gendoria/param-converter-bundle.svg)](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/?branch=master)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/Gendoria/param-converter-bundle.svg)](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/?branch=master)
+[![Downloads](https://img.shields.io/packagist/dt/gendoria/param-converter-bundle.svg)](https://packagist.org/packages/gendoria/param-converter-bundle)
+[![Latest Stable Version](https://img.shields.io/packagist/v/gendoria/param-converter-bundle.svg)](https://packagist.org/packages/gendoria/param-converter-bundle)
 
 
 Installation
