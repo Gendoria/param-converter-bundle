@@ -79,3 +79,30 @@ Usage
 
 
 You can use parameter converters from this bundle as any other parameter converters.
+
+Service param converter
+-----------------------
+
+You can use it by adding following call:
+
+`@ParamConverter("parameter_name", converter="service_param_converter", options={"service" = "service_id", "method" = "service_method", "arguments" = {"%requestParamName%", "@otherServiceId", "someParameter"})`
+
+Where the first argument is a parameter name, converter specifies the converter to use,
+and options - configure the converter.
+
+Required options are service (service ID) and method (service method). 
+Additionally, you can pass arguments to method by using "arguments" option.
+
+Arguments is a list of service arguments. There are three types of them:
+
+- **Simple argument**. This is the default option. No additional parsing is added.
+- **Request parameter**. You have to enclose parameter name with % signs 
+  and converter will extract it from the request. For example, 
+  when you define argument as `%myParam%`, the service will try to fetch parameter
+  `myParam` from the request.
+- **Service parameter**. When you preceede argument with `@` character, it will be treated as a service ID.
+  Parser will try to fetch the service from service container and inject it to the method call.
+  If the service is not registered in the container, an `\InvalidArgumentException` will be thrown.
+
+Converter parameter is only needed, when conversion may collide with other param converters
+(especially default `DoctrineParamConverter`).
