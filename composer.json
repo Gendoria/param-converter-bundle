@@ -1,6 +1,7 @@
 {
     "name": "gendoria/param-converter-bundle",
     "description": "Adds several additional parameter converters",
+    "type": "symfony-bundle",
     "authors": [
         {
             "name": "Gendoria",
@@ -9,7 +10,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.3.0",
         "symfony/framework-bundle": "~2.3|~3.0",
         "sensio/framework-extra-bundle": "~3.0"
     },
