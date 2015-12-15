@@ -229,6 +229,29 @@ class ServiceParamConverterTest extends PHPUnit_Framework_TestCase
         $this->converter->apply($request, $config);
     }
     
+    public function testApplyIncorrectType()
+    {
+        $service = $this->getMock('stdClass', array('dummy'));
+        $service->expects($this->once())
+            ->method('dummy')
+            ->will($this->returnValue(1));
+        
+        $this
+            ->container
+            ->expects($this->at(0))
+            ->method('get')
+            ->with('dummy')
+            ->will($this->returnValue($service));
+        
+        
+        $request = new Request(array(), array(), array('dummy' => '1'));
+        $config = $this->createConfiguration('NonExistentClass', 'dummyparam', array(
+            'service' => 'dummy',
+            'method' => 'dummy',
+        ));
+
+        $this->assertFalse($this->converter->apply($request, $config));
+    }
     
     public function createConfiguration($class = null, $name = null, array $options = array())
     {
