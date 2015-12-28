@@ -51,6 +51,7 @@ class ServiceParamConverter implements ParamConverterInterface
      * @param Request $request Request
      * @param ParamConverter $configuration Param converter configuration.
      * @return boolean
+     * @throws InvalidArgumentException
      */
     public function apply(Request $request, ParamConverter $configuration)
     {
@@ -58,14 +59,7 @@ class ServiceParamConverter implements ParamConverterInterface
         $options = $this->getOptions($configuration);
         
         foreach ($options['arguments'] as &$value) {
-            if (strpos($value, '%') === 0 && strrpos($value, '%') === strlen($value)-1) {
-                $value = $request->get(substr($value, 1, strlen($value)-2));
-            } elseif (strpos($value, '@') === 0) {
-                if (!$this->container->has(substr($value, 1))) {
-                    throw new InvalidArgumentException("Unknown service requested: ".$value);
-                }
-                $value = $this->container->get(substr($value, 1));
-            }
+            $value = $this->parseArgument($value, $request);
         }
         
         $service = $this->container->get($options['service']);
@@ -78,6 +72,27 @@ class ServiceParamConverter implements ParamConverterInterface
         $request->attributes->set($param, $return);
         
         return true;
+    }
+    
+    /**
+     * Parse single argument.
+     * 
+     * @param string $value
+     * @param Request $request
+     * @return mixed
+     * @throws InvalidArgumentException
+     */
+    private function parseArgument($value, Request $request)
+    {
+        if (strpos($value, '%') === 0 && strrpos($value, '%') === strlen($value)-1) {
+            return $request->get(substr($value, 1, strlen($value)-2));
+        } elseif (strpos($value, '@') === 0) {
+            if (!$this->container->has(substr($value, 1))) {
+                throw new InvalidArgumentException("Unknown service requested: ".$value);
+            }
+            return $this->container->get(substr($value, 1));
+        }
+        return $value;
     }
 
     public function supports(ParamConverter $configuration)
