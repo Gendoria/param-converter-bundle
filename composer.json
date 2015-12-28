@@ -5,7 +5,13 @@
     "authors": [
         {
             "name": "Gendoria",
-            "email": "gendoria@gendoria.pl"
+            "email": "gendoria@gendoria.pl",
+            "role": "owner"
+        },
+        {
+            "name": "Tomasz Struczyński",
+            "email": "t.struczynski@gmail.com",
+            "role": "developer"
         }
     ],
     "license": "MIT",
