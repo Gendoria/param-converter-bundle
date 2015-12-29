@@ -87,7 +87,7 @@ class ServiceParamConverter implements ParamConverterInterface
         if (strpos($value, '%') === 0 && strrpos($value, '%') === strlen($value)-1) {
             return $request->get(substr($value, 1, strlen($value)-2));
         } elseif (strpos($value, '@') === 0) {
-            if (!$this->container->has(substr($value, 1))) {
+            if ($this->container->has(substr($value, 1)) === false) {
                 throw new InvalidArgumentException("Unknown service requested: ".$value);
             }
             return $this->container->get(substr($value, 1));
