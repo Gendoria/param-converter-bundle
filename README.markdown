@@ -9,6 +9,7 @@ Gendoria parameter converter bundle adds some more converters to Framework Extra
 [![Downloads](https://img.shields.io/packagist/dt/gendoria/param-converter-bundle.svg)](https://packagist.org/packages/gendoria/param-converter-bundle)
 [![Latest Stable Version](https://img.shields.io/packagist/v/gendoria/param-converter-bundle.svg)](https://packagist.org/packages/gendoria/param-converter-bundle)
 
+Bundle should be compatible with all versions of PHP higher, than 5.4 (check the build status).
 
 Installation
 ============

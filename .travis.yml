@@ -17,6 +17,8 @@ matrix:
   include:
     - php: 5.3
       env: deps=low
+  allow_failures:
+        - php: hhvm
         
 script: phpunit --coverage-clover=coverage.clover
 
