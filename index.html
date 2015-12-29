@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Param-converter-bundle by Gendoria</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Param-converter-bundle</h1>
+        <h2>Gendoria parameter converter bundle adds some more converters to Framework Extra Bundle converters.</h2>
+        <a href="https://github.com/Gendoria/param-converter-bundle" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="summary" class="anchor" href="#summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary</h1>
+
+<p>Gendoria parameter converter bundle adds some more converters to Framework Extra Bundle converters.</p>
+
+<p><a href="https://travis-ci.org/Gendoria/param-converter-bundle"><img src="https://img.shields.io/travis/Gendoria/param-converter-bundle/master.svg" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/?branch=master"><img src="https://img.shields.io/scrutinizer/g/Gendoria/param-converter-bundle.svg" alt="Scrutinizer Code Quality"></a>
+<a href="https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/?branch=master"><img src="https://img.shields.io/scrutinizer/coverage/g/Gendoria/param-converter-bundle.svg" alt="Code Coverage"></a>
+<a href="https://packagist.org/packages/gendoria/param-converter-bundle"><img src="https://img.shields.io/packagist/dt/gendoria/param-converter-bundle.svg" alt="Downloads"></a>
+<a href="https://packagist.org/packages/gendoria/param-converter-bundle"><img src="https://img.shields.io/packagist/v/gendoria/param-converter-bundle.svg" alt="Latest Stable Version"></a></p>
+
+<p>Bundle should be compatible with all versions of PHP higher, than 5.4 (check the build status).</p>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<h2>
+<a id="step-1-download-the-bundle" class="anchor" href="#step-1-download-the-bundle" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 1: Download the bundle</h2>
+
+<p>Open a command console, enter your project directory and execute the
+following command to download the latest stable version of this bundle:</p>
+
+<div class="highlight highlight-source-shell"><pre>$ composer require gendoria/param-converter <span class="pl-s"><span class="pl-pds">"</span>~1<span class="pl-pds">"</span></span></pre></div>
+
+<p>This command requires you to have Composer installed globally, as explained
+in the <a href="https://getcomposer.org/doc/00-intro.md">installation chapter</a>
+of the Composer documentation.</p>
+
+<h2>
+<a id="step-2-enable-the-framework-extra-bundle" class="anchor" href="#step-2-enable-the-framework-extra-bundle" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2: Enable the Framework Extra bundle</h2>
+
+<p>This bundle requires Framework Extra bundle enabled. You can to that
+ by adding it to the list of registered bundles in the <code>app/AppKernel.php</code> 
+file of your project (if not already done):</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// app/AppKernel.php</span></span>
+<span class="pl-s1"><span class="pl-c">// ...</span></span>
+<span class="pl-s1"><span class="pl-k">class</span> <span class="pl-en">AppKernel</span> <span class="pl-k">extends</span> <span class="pl-e">Kernel</span></span>
+<span class="pl-s1">{</span>
+<span class="pl-s1">    <span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">registerBundles</span>()</span>
+<span class="pl-s1">    {</span>
+<span class="pl-s1">        <span class="pl-smi">$bundles</span> <span class="pl-k">=</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">            <span class="pl-c">// ...</span></span>
+<span class="pl-s1">            <span class="pl-k">new</span> <span class="pl-c1">Sensio\Bundle\FrameworkExtraBundle\</span><span class="pl-c1">SensioFrameworkExtraBundle</span>(),</span>
+<span class="pl-s1">        );</span>
+<span class="pl-s1">        <span class="pl-c">// ...</span></span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">    <span class="pl-c">// ...</span></span>
+<span class="pl-s1">}</span></pre></div>
+
+<h2>
+<a id="step-3-enable-the-bundle" class="anchor" href="#step-3-enable-the-bundle" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 3: Enable the Bundle</h2>
+
+<p>Then, enable the bundle by adding it to the list of registered bundles
+in the <code>app/AppKernel.php</code> file of your project:</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// app/AppKernel.php</span></span>
+<span class="pl-s1"><span class="pl-c">// ...</span></span>
+<span class="pl-s1"><span class="pl-k">class</span> <span class="pl-en">AppKernel</span> <span class="pl-k">extends</span> <span class="pl-e">Kernel</span></span>
+<span class="pl-s1">{</span>
+<span class="pl-s1">    <span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">registerBundles</span>()</span>
+<span class="pl-s1">    {</span>
+<span class="pl-s1">        <span class="pl-smi">$bundles</span> <span class="pl-k">=</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">            <span class="pl-c">// ...</span></span>
+<span class="pl-s1">            <span class="pl-k">new</span> <span class="pl-c1">Gendoria\ParamConverterBundle\</span><span class="pl-c1">GendoriaParamConverterBundle</span>(),</span>
+<span class="pl-s1">        );</span>
+<span class="pl-s1">        <span class="pl-c">// ...</span></span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">    <span class="pl-c">// ...</span></span>
+<span class="pl-s1">}</span></pre></div>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>You can use parameter converters from this bundle as any other parameter converters.</p>
+
+<h2>
+<a id="service-param-converter" class="anchor" href="#service-param-converter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service param converter</h2>
+
+<p>You can use it by adding following call:</p>
+
+<p><code>@ParamConverter("parameter_name", converter="service_param_converter", options={"service" = "service_id", "method" = "service_method", "arguments" = {"%requestParamName%", "@otherServiceId", "someParameter"})</code></p>
+
+<p>Where the first argument is a parameter name, converter specifies the converter to use,
+and options - configure the converter.</p>
+
+<p>Required options are service (service ID) and method (service method). 
+Additionally, you can pass arguments to method by using "arguments" option.</p>
+
+<p>Arguments is a list of service arguments. There are three types of them:</p>
+
+<ul>
+<li>
+<strong>Simple argument</strong>. This is the default option. No additional parsing is added.</li>
+<li>
+<strong>Request parameter</strong>. You have to enclose parameter name with % signs 
+and converter will extract it from the request. For example, 
+when you define argument as <code>%myParam%</code>, the service will try to fetch parameter
+<code>myParam</code> from the request.</li>
+<li>
+<strong>Service parameter</strong>. When you preceede argument with <code>@</code> character, it will be treated as a service ID.
+Parser will try to fetch the service from service container and inject it to the method call.
+If the service is not registered in the container, an <code>\InvalidArgumentException</code> will be thrown.</li>
+</ul>
+
+<p>Converter parameter is only needed, when conversion may collide with other param converters
+(especially default <code>DoctrineParamConverter</code>).</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/Gendoria/param-converter-bundle/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/Gendoria/param-converter-bundle/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/Gendoria/param-converter-bundle"></a> is maintained by <a href="https://github.com/Gendoria">Gendoria</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
