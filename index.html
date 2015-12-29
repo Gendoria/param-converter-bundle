@@ -111,7 +111,8 @@ in the <code>app/AppKernel.php</code> file of your project:</p>
 
 <p>You can use it by adding following call:</p>
 
-<p><code>@ParamConverter("parameter_name", converter="service_param_converter", options={"service" = "service_id", "method" = "service_method", "arguments" = {"%requestParamName%", "@otherServiceId", "someParameter"})</code></p>
+<pre><code>@ParamConverter("parameter_name", converter="service_param_converter", options={"service" = "service_id", "method" = "service_method", "arguments" = {"%requestParamName%", "@otherServiceId", "someParameter"})
+</code></pre>
 
 <p>Where the first argument is a parameter name, converter specifies the converter to use,
 and options - configure the converter.</p>
