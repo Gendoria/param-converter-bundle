@@ -129,4 +129,4 @@ Or with custom delimiter:
 @ParamConverter("parameter_name", options={"delimiter" = "|"})
 ```
 
-Where parameter type in function type hints is ArrayObject.
+Where parameter type in function type hints is `ArrayObject`.
