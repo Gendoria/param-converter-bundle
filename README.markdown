@@ -88,7 +88,9 @@ Service param converter
 
 You can use it by adding following call:
 
-`@ParamConverter("parameter_name", converter="service_param_converter", options={"service" = "service_id", "method" = "service_method", "arguments" = {"%requestParamName%", "@otherServiceId", "someParameter"})`
+```
+@ParamConverter("parameter_name", converter="service_param_converter", options={"service" = "service_id", "method" = "service_method", "arguments" = {"%requestParamName%", "@otherServiceId", "someParameter"})
+```
 
 Where the first argument is a parameter name, converter specifies the converter to use,
 and options - configure the converter.
