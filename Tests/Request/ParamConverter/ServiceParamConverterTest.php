@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Description of ServiceParamConverterTest
+ * Tests for ServiceParamConverter
  *
  * @author Tomasz Struczyński <tomasz.struczynski@isobar.com>
  */
