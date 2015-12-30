@@ -138,6 +138,25 @@ If the service is not registered in the container, an <code>\InvalidArgumentExce
 
 <p>Converter parameter is only needed, when conversion may collide with other param converters
 (especially default <code>DoctrineParamConverter</code>).</p>
+
+<h2>
+<a id="arrayobject-param-converter" class="anchor" href="#arrayobject-param-converter" aria-hidden="true"><span class="octicon octicon-link"></span></a>ArrayObject param converter</h2>
+
+<p>This parameter converter can be used to explode parameter into array of objects.
+Parameter has to be a string with delimited values. Default delimiter is comma, 
+but you can use your own, custom delimiter.</p>
+
+<p>To invoke param converter, you should use following annotation:</p>
+
+<pre><code>@ParamConverter("parameter_name")
+</code></pre>
+
+<p>Or with custom delimiter: </p>
+
+<pre><code>@ParamConverter("parameter_name", options={"delimiter" = "|"})
+</code></pre>
+
+<p>Where parameter type in function type hints is <code>ArrayObject</code>.</p>
         </section>
 
         <aside id="sidebar">
