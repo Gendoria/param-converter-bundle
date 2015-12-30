@@ -109,3 +109,24 @@ Arguments is a list of service arguments. There are three types of them:
 
 Converter parameter is only needed, when conversion may collide with other param converters
 (especially default `DoctrineParamConverter`).
+
+ArrayObject param converter
+---------------------------
+
+This parameter converter can be used to explode parameter into array of objects.
+Parameter has to be a string with delimited values. Default delimiter is comma, 
+but you can use your own, custom delimiter.
+
+To invoke param converter, you should use following annotation:
+
+```
+@ParamConverter("parameter_name")
+```
+
+Or with custom delimiter: 
+
+```
+@ParamConverter("parameter_name", options={"delimiter" = "|"})
+```
+
+Where parameter type in function type hints is ArrayObject.
