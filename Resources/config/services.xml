@@ -14,5 +14,5 @@
             <argument type="service" id="service_container" />
             <tag name="request.param_converter" priority="-3" converter="array_object_param_converter" />
         </service>
-    </services>    
+    </services>
 </container>
