@@ -19,7 +19,8 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('gendoria_param_converter');
+        // $rootNode = $treeBuilder->root('gendoria_param_converter');
+        $treeBuilder->root('gendoria_param_converter');
 
         return $treeBuilder;
     }
