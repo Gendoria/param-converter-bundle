@@ -6,6 +6,7 @@ Gendoria parameter converter bundle adds some more converters to Framework Extra
 [![Build Status](https://img.shields.io/travis/Gendoria/param-converter-bundle/master.svg)](https://travis-ci.org/Gendoria/param-converter-bundle)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/Gendoria/param-converter-bundle.svg)](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/?branch=master)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/Gendoria/param-converter-bundle.svg)](https://scrutinizer-ci.com/g/Gendoria/param-converter-bundle/?branch=master)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/8d7aa5a7-e20c-4032-bde0-6babe5ac04ee/mini.png)](https://insight.sensiolabs.com/projects/8d7aa5a7-e20c-4032-bde0-6babe5ac04ee)
 [![Downloads](https://img.shields.io/packagist/dt/gendoria/param-converter-bundle.svg)](https://packagist.org/packages/gendoria/param-converter-bundle)
 [![Latest Stable Version](https://img.shields.io/packagist/v/gendoria/param-converter-bundle.svg)](https://packagist.org/packages/gendoria/param-converter-bundle)
 
