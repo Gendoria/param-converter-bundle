@@ -134,6 +134,14 @@ class ServiceParamConverter implements ParamConverterInterface
         return null;
     }
     
+    /**
+     * Parse function arguments.
+     * 
+     * @param string $argumentsStr
+     * @param Request $request
+     * @return array
+     * @throws InvalidArgumentException Thrown, when function arguments cannot be parsed.
+     */
     private function parseFunctionArguments($argumentsStr, Request $request)
     {
         if (strpos($argumentsStr, '(') !== 0 || strpos($argumentsStr, ')') !== strlen($argumentsStr)-1) {
@@ -146,6 +154,12 @@ class ServiceParamConverter implements ParamConverterInterface
         return $argumentsArr;
     }
 
+    /**
+     * Return true, if current configuration is supported.
+     * 
+     * @param ParamConverter $configuration
+     * @return boolean
+     */
     public function supports(ParamConverter $configuration)
     {
         $options = $this->getOptions($configuration);
