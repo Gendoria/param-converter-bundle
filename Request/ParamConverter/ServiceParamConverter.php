@@ -89,7 +89,7 @@ class ServiceParamConverter implements ParamConverterInterface
     private function parseArgument($value, Request $request)
     {
         if (strpos($value, '%') === 0 && strrpos($value, '%') === strlen($value)-1) {
-            return $request->get(substr($value, 1, strlen($value)-2));
+            return $this->parseParameterArgument(substr($value, 1, strlen($value)-2), $request);
         } elseif (strpos($value, '@') === 0) {
             if ($this->container->has(substr($value, 1)) === false) {
                 throw new InvalidArgumentException('Unknown service requested: '.$value);
@@ -99,6 +99,51 @@ class ServiceParamConverter implements ParamConverterInterface
         }
 
         return $value;
+    }
+    
+    /**
+     * Parse parameter type argument.
+     * 
+     * @param string $value
+     * @param Request $request
+     * @return type
+     */
+    private function parseParameterArgument($value, Request $request)
+    {
+        if ($this !== $result = $request->get($value, $this)) {
+            return $result;
+        }
+        
+        //Argument may refer to function call of another argument
+        if (strpos($value, '::')) {
+            $paramName = substr($value, 0, strpos($value, '::'));
+            $fnData = substr($value, strpos($value, '::')+2);
+            if (strpos($fnData, '(')) {
+                $fnName = substr($fnData, 0, strpos($fnData, '('));
+                $fnArguments = $this->parseFunctionArguments(substr($fnData, strpos($fnData, '(')), $request);
+            } else {
+                $fnName = $fnData;
+                $fnArguments = array();
+            }
+            $possibleObject = $request->get($paramName);
+            if (!$possibleObject || !is_callable(array($possibleObject, $fnName))) {
+                return null;
+            }
+            return call_user_func_array(array($possibleObject, $fnName), $fnArguments);
+        }
+        return null;
+    }
+    
+    private function parseFunctionArguments($argumentsStr, Request $request)
+    {
+        if (strpos($argumentsStr, '(') !== 0 || strpos($argumentsStr, ')') !== strlen($argumentsStr)-1) {
+            throw new \InvalidArgumentException("Incorrect function arguments string");
+        }
+        $argumentsArr = explode(",", substr($argumentsStr, 1, strlen($argumentsStr)-2));
+        foreach ($argumentsArr as &$argument) {
+            $argument = $this->parseArgument($argument, $request);
+        }
+        return $argumentsArr;
     }
 
     public function supports(ParamConverter $configuration)

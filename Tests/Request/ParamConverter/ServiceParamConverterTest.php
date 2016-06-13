@@ -161,6 +161,116 @@ class ServiceParamConverterTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, $request->attributes->get('dummyparam'));
     }
     
+    public function testApplyRequestFunctionArgument()
+    {
+        $service = $this->getMock('stdClass', array('dummy'));
+        $service->expects($this->once())
+            ->method('dummy')
+            ->with(10)
+            ->will($this->returnArgument(0));
+        $innerService = $this->getMock('stdClass', array('dummy'));
+        $innerService->expects($this->once())
+            ->method('dummy')
+            ->will($this->returnValue(10));
+        
+        $this
+            ->container
+            ->expects($this->at(0))
+            ->method('get')
+            ->with('dummy')
+            ->will($this->returnValue($service));
+        
+        
+        $request = new Request(array('inner' => $innerService), array(), array());
+        $config = $this->createConfiguration(null, 'dummyparam', array(
+            'service' => 'dummy',
+            'method' => 'dummy',
+            'arguments' => array(
+                '%inner::dummy%'
+            )
+        ));
+
+        $this->converter->apply($request, $config);
+
+        $this->assertEquals(10, $request->attributes->get('dummyparam'));
+    }  
+    
+    public function testApplyRequestFunctionWithArgumentsArgument()
+    {
+        $service = $this->getMock('stdClass', array('dummy'));
+        $service->expects($this->once())
+            ->method('dummy')
+            ->with(10)
+            ->will($this->returnArgument(0));
+        $innerService = $this->getMock('stdClass', array('dummy'));
+        $innerService->expects($this->once())
+            ->method('dummy')
+            ->will($this->returnArgument(0));
+        
+        $this
+            ->container
+            ->expects($this->at(0))
+            ->method('get')
+            ->with('dummy')
+            ->will($this->returnValue($service));
+        
+        
+        $request = new Request(array('inner' => $innerService, 'rp' => 10), array(), array());
+        $config = $this->createConfiguration(null, 'dummyparam', array(
+            'service' => 'dummy',
+            'method' => 'dummy',
+            'arguments' => array(
+                '%inner::dummy(%rp%)%'
+            )
+        ));
+
+        $this->converter->apply($request, $config);
+
+        $this->assertEquals(10, $request->attributes->get('dummyparam'));
+    }    
+    
+    /**
+     * @dataProvider fnArgumentsDataProvider
+     */
+    public function testApplyRequestFunctionWithInvalidArgumentsArgument($argumentStr)
+    {
+        $this->setExpectedException('\InvalidArgumentException');
+        $service = $this->getMock('stdClass', array('dummy'));
+        $service->expects($this->never())
+            ->method('dummy')
+            ->will($this->returnArgument(0));
+        $innerService = $this->getMock('stdClass', array('dummy'));
+        $innerService->expects($this->never())
+            ->method('dummy')
+            ->will($this->returnArgument(0));
+        
+        $this
+            ->container
+            ->expects($this->never())
+            ->method('get')
+            ;
+        
+        $request = new Request(array('inner' => $innerService, 'rp' => 10), array(), array());
+        $config = $this->createConfiguration(null, 'dummyparam', array(
+            'service' => 'dummy',
+            'method' => 'dummy',
+            'arguments' => array(
+                $argumentStr
+            )
+        ));
+
+        $this->converter->apply($request, $config);
+
+        $this->assertEquals(10, $request->attributes->get('dummyparam'));
+    }
+    
+    public function fnArgumentsDataProvider()
+    {
+        return array(
+            array('%inner::dummy(%rp%%'),
+        );
+    }
+    
     public function testApplyRequestService()
     {
         $intService = $this->getMock('stdClass', array('dummy'));
