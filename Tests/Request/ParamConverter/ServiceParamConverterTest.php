@@ -161,6 +161,36 @@ class ServiceParamConverterTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, $request->attributes->get('dummyparam'));
     }
     
+    public function testApplyNonExistingRequestArguments()
+    {
+        $service = $this->getMock('stdClass', array('dummy'));
+        $service->expects($this->once())
+            ->method('dummy')
+            ->with(null)
+            ->will($this->returnArgument(0));
+        
+        $this
+            ->container
+            ->expects($this->at(0))
+            ->method('get')
+            ->with('dummy')
+            ->will($this->returnValue($service));
+        
+        
+        $request = new Request(array(), array(), array());
+        $config = $this->createConfiguration(null, 'dummyparam', array(
+            'service' => 'dummy',
+            'method' => 'dummy',
+            'arguments' => array(
+                '%rp%'
+            )
+        ));
+
+        $this->converter->apply($request, $config);
+
+        $this->assertEquals(null, $request->attributes->get('dummyparam'));
+    }
+    
     public function testApplyRequestFunctionArgument()
     {
         $service = $this->getMock('stdClass', array('dummy'));
@@ -193,6 +223,37 @@ class ServiceParamConverterTest extends PHPUnit_Framework_TestCase
         $this->converter->apply($request, $config);
 
         $this->assertEquals(10, $request->attributes->get('dummyparam'));
+    }  
+    
+    public function testApplyRequestNonExistingFunctionArgument()
+    {
+        $service = $this->getMock('stdClass', array('dummy'));
+        $service->expects($this->once())
+            ->method('dummy')
+            ->with(null)
+            ->will($this->returnArgument(0));
+        $innerService = $this->getMock('stdClass', array('dummy'));
+        
+        $this
+            ->container
+            ->expects($this->at(0))
+            ->method('get')
+            ->with('dummy')
+            ->will($this->returnValue($service));
+        
+        
+        $request = new Request(array('inner' => $innerService), array(), array());
+        $config = $this->createConfiguration(null, 'dummyparam', array(
+            'service' => 'dummy',
+            'method' => 'dummy',
+            'arguments' => array(
+                '%inner::nonexisting%'
+            )
+        ));
+
+        $this->converter->apply($request, $config);
+
+        $this->assertEquals(null, $request->attributes->get('dummyparam'));
     }  
     
     public function testApplyRequestFunctionWithArgumentsArgument()
