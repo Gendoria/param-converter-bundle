@@ -1,0 +1,8 @@
+title: Param converter bundle
+description: Gendoria parameter converter bundle adds some more converters to Framework Extra Bundle converters.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
